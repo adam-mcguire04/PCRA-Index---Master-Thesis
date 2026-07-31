@@ -1,4 +1,4 @@
-# PCRA-Index---Master-s-Thesis
+# PCRA-Index's Validation & Application
 
 This repository contains the full set of Jupyter notebooks used to construct, validate, and apply the **Physical Climate Risk Attention (PCRA) index**, decomposed into its persistent level component (**SSI**, Salience State Index) and its transitory component (**CSP**, Climate Surprise Proxy).
 
