@@ -1,8 +1,15 @@
-# PCRA-Index's Validation & Application
+# PCRA Index — Notebook Suite
 
 This repository contains the full set of Jupyter notebooks used to construct, validate, and apply the **Physical Climate Risk Attention (PCRA) index**, decomposed into its persistent level component (**SSI**, Salience State Index) and its transitory component (**CSP**, Climate Surprise Proxy).
 
 **Each notebook is independent.** They all load the constructed index and any required financial/event data directly from disk at the top of the notebook (`Config — set Paths` / `Load data` cells), so none of them needs to be run in the same kernel session as another. The only hard dependency is that `Index_Construction.ipynb` must have been run at least once to produce the index files that every other notebook reads in.
+
+## Getting started (for anyone new to the repo)
+
+- **Environment.** Python 3.10+ recommended. Each notebook installs its own dependencies in an early cell (commented-out `pip install` lines) — uncomment and run once per environment, then restart the kernel before continuing, as the notebooks expect a clean kernel after installs. Core libraries used across the suite: `pandas`, `numpy`, `statsmodels`, `scikit-learn`, `spacy` (with the `en_core_web_trf` model), `mediacloud`, `trafilatura`, `newspaper3k`, and `linearmodels`.
+- **API keys.** Three notebooks call external APIs with a key hardcoded directly in a cell: `Index_Construction.ipynb` uses a `MEDIA_CLOUD_API_KEY` for Media Cloud article retrieval, and `Industry_Investigation.ipynb` uses an `FMP_API_KEY` (Financial Modeling Prep, for firm-level daily returns) and an `HF_API_KEY` (Hugging Face, for model downloads). **These are placeholders that must be replaced with your own keys** — get a Media Cloud key at [mediacloud.org](https://www.mediacloud.org/), an FMP key at [financialmodelingprep.com](https://financialmodelingprep.com/), and a Hugging Face token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens). Before pushing this repo anywhere public, swap all three from hardcoded strings to environment variables (e.g. `os.environ["MEDIA_CLOUD_API_KEY"]`) so no key is ever committed to version control.
+- **Data paths.** Each notebook defines a root data directory near the top (e.g. `THESIS_DATA_ROOT`/`ROOT`) that all inputs and outputs are read from and written to — update this to a local path before running.
+- **Reading order within a notebook.** Cells inside each notebook are meant to be run top to bottom; several later cells assert that earlier setup cells have already been run (you'll see `assert name in globals()`-style guards), which is intentional and will tell you exactly which earlier cell to run if you jump ahead.
 
 ## Suggested run order
 
@@ -36,7 +43,3 @@ The bond-side asset-pricing application. Builds the master panel and runs Jordà
 
 ### 8. `Industry_Investigation.ipynb`
 The equity-side asset-pricing application. Builds FF12 and FF49 industry exposure scores and panels, runs the daily panel regressions and compares taxonomies, tests temporal-aggregation and cross-validation robustness, sub-sample stability, and lagged-return checks, and breaks results down by exposure gamma, power/severity/volatility, firm level, and conditionality (plus a Faccini-style monthly/weekly comparison).
-
-## Notes
-- Notebooks 2–8 are each self-contained validation or application exercises that read the index built in step 1 — you can run them in any order relative to each other, but all of them depend on step 1 having been completed.
-- `Sovereign_Investigation.ipynb` and `Industry_Investigation.ipynb` together form the asset-pricing validation referenced throughout the thesis against the CPU paper (Gavriilidis, Känzig, Raghavan & Stock, NBER WP 34762).
