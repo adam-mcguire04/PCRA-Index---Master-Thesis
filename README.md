@@ -1,4 +1,4 @@
-# PCRA Index — Notebook Suite
+# PCRA Index
 
 ## Objective
 
