@@ -2,7 +2,7 @@
 
 ## Objective
 
-This repository builds and validates the **Physical Climate Risk Attention (PCRA) index**, a daily, text-based measure of how much attention US newspapers pay to physical climate risk. The index separates a persistent level component (**SSI** — Salience State Index) from a shock component (**CSP** — Climate Surprise Proxy), and then tests whether that attention shows up in asset prices. It is built as a measurement paper first: the goal is a well-validated index, with the Treasury-yield and industry-equity work serving as an external check on whether the index behaves like a real risk signal.
+This repository builds and validates the **Physical Climate Risk Attention (PCRA) index**, a daily, text-based measure of how much attention US newspapers pay to physical climate risk. The index separates a persistent level component (**SSI** — Salience State Index) from a shock component (**CSP** — Climate Surprise Proxy), and tests whether that attention shows up in asset prices. It is built as a measurement paper first: the goal is a well-validated index, with the Treasury-yield and industry-equity work serving as an external check on whether the index behaves like a real risk signal.
 
 **Key finding:** unlike climate policy uncertainty, physical-risk attention does not move US Treasury yields, and surfaces only weakly in exposed-industry equity returns.
 
