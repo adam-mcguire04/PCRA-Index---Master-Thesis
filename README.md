@@ -1,4 +1,4 @@
-# PCRA Index
+# Physical Climate Risk Attention (PCRA) Index
 
 ## Objective
 
